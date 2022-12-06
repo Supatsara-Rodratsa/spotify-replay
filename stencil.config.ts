@@ -1,16 +1,25 @@
 import { Config } from '@stencil/core';
 
-// https://stenciljs.com/docs/config
-
 export const config: Config = {
-  globalStyle: 'src/global/app.css',
-  globalScript: 'src/global/app.ts',
+  // Update the namespace value with your project name (kebab-case)
+  namespace: 'design-system',
+  // Change this to any other location where you want to store global CSS settings for all web components
+  globalStyle: 'src/shared/css/global.css',
+  // Probs you don't want to change these below.
   outputTargets: [
     {
+      type: 'dist',
+      esmLoaderPath: '../loader',
+    },
+    {
+      type: 'dist-custom-elements',
+    },
+    {
+      type: 'docs-readme',
+    },
+    {
       type: 'www',
-      // comment the following line to disable service workers in production
-      serviceWorker: null,
-      baseUrl: 'https://myapp.local/',
+      serviceWorker: null, // disable service workers
     },
   ],
 };
